@@ -13,3 +13,5 @@ C:\code\videostore\code\videostore\VideoStore\bin\System.Web.Http.WebHost.xml
 C:\code\videostore\code\videostore\VideoStore\obj\Release\VideoStore.dll
 C:\code\videostore\code\videostore\VideoStore\obj\Release\VideoStore.pdb
 C:\code\videostore\code\videostore\VideoStore\obj\Release\VideoStore.csprojResolveAssemblyReference.cache
+C:\code\videostore\code\videostore\VideoStore\bin\log4net.dll
+C:\code\videostore\code\videostore\VideoStore\bin\log4net.xml
