@@ -18,3 +18,5 @@ C:\code\videostore\code\videostore\VideoStore.Tests\bin\Release\System.Web.Http.
 C:\code\videostore\code\videostore\VideoStore.Tests\obj\Release\VideoStore.Tests.csprojResolveAssemblyReference.cache
 C:\code\videostore\code\videostore\VideoStore.Tests\obj\Release\VideoStore.Tests.dll
 C:\code\videostore\code\videostore\VideoStore.Tests\obj\Release\VideoStore.Tests.pdb
+C:\code\videostore\code\videostore\VideoStore.Tests\bin\Release\log4net.dll
+C:\code\videostore\code\videostore\VideoStore.Tests\bin\Release\log4net.xml

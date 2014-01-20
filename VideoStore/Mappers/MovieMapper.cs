@@ -15,7 +15,7 @@ namespace VideoStore.Mappers
                 Genre = movieData.Genre,
                 MovieId = movieData.MovieId,
                 Rating = movieData.Rating,
-                ReleaseDate = new DateTime(movieData.ReleaseDate),
+                ReleaseDate = movieData.ReleaseDate,
                 Title = movieData.Title
             };
         }
@@ -29,7 +29,7 @@ namespace VideoStore.Mappers
                 Genre = movie.Genre,
                 MovieId = movie.MovieId,
                 Rating = movie.Rating,
-                ReleaseDate = (int) movie.ReleaseDate.Ticks,
+                ReleaseDate =  movie.ReleaseDate,
                 Title = movie.Title
             };
 

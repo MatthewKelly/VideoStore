@@ -13,30 +13,78 @@ namespace VideoStore.Tests.Controllers
         public void Get_Returns_All_Results()
         {
             // Arrange
-            MoviesController controller = new MoviesController();
+            var controller = new MoviesController();
 
             // Act
-            var result = controller.Get(MovieAttributes.Classification);
+            var result = controller.Get(null, MovieAttribute.Classification);
 
-            Assert.AreEqual(result.Count(), 80);
+            Assert.AreEqual(result.Count, 80);
 
 
         }
-        /*
-        [TestMethod]
-        public void GetById()
+
+        [Test]
+        public void Get_Returns_Results_With_Correct_Sorting_For_A_Number_Based_Field()
+        {
+            // Arrange0
+            var controller = new MoviesController();
+
+            // Act
+            var result = controller.Get(null, MovieAttribute.MovieId).Results;
+            
+            Assert.IsTrue(result.ElementAt(0).MovieId <= result.ElementAt(1).MovieId);
+            Assert.IsTrue(result.ElementAt(1).MovieId <= result.ElementAt(2).MovieId);
+            Assert.IsTrue(result.ElementAt(2).MovieId <= result.ElementAt(3).MovieId);
+
+        }
+
+
+        [Test]
+        public void Get_Returns_Results_With_Correct_Sorting_For_A_String_Based_Field()
+        {
+            // Arrange0
+            var controller = new MoviesController();
+
+            // Act
+            var result = controller.Get(null, MovieAttribute.Genre).Results;
+
+            Assert.IsTrue(result.ElementAt(0).Genre[0] <= result.ElementAt(1).Genre[0]);
+            Assert.IsTrue(result.ElementAt(1).Genre[0] <= result.ElementAt(2).Genre[0]);
+            Assert.IsTrue(result.ElementAt(2).Genre[0] <= result.ElementAt(3).Genre[0]);
+
+        }
+
+        [Test]
+        public void Get_Returns_Results_With_Correct_Sorting_For_A_Date_Based_Field()
+        {
+            // Arrange0
+            var controller = new MoviesController();
+
+            // Act
+            var result = controller.Get(null, MovieAttribute.ReleaseDate).Results;
+
+            Assert.IsTrue(result.ElementAt(0).ReleaseDate <= result.ElementAt(1).ReleaseDate);
+            Assert.IsTrue(result.ElementAt(1).ReleaseDate <= result.ElementAt(2).ReleaseDate);
+            Assert.IsTrue(result.ElementAt(2).ReleaseDate <= result.ElementAt(3).ReleaseDate);
+
+        }
+
+        [Test]
+        public void Search_Returns_Correct_Result()
         {
             // Arrange
-            MoviesController controller = new MoviesController();
+            var controller = new MoviesController();
 
-            // Act
-            string result = controller.Get(5);
+            // Act[
+            var result = controller.Get(new SearchCriteria { Title = "The Day After Tomorrow" }).Results;
 
-            // Assert
-            Assert.AreEqual("value", result);
+            Assert.AreEqual(result.Count(), 1);
+            Assert.AreEqual(result.Single().Title, "The Day After Tomorrow");
+
         }
-
-        [TestMethod]
+        
+        /*
+        [Test]
         public void Post()
         {
             // Arrange
@@ -48,7 +96,7 @@ namespace VideoStore.Tests.Controllers
             // Assert
         }
 
-        [TestMethod]
+        [Test]
         public void Put()
         {
             // Arrange
@@ -59,19 +107,7 @@ namespace VideoStore.Tests.Controllers
 
             // Assert
         }
-
-        [TestMethod]
-        public void Delete()
-        {
-            // Arrange
-            MoviesController controller = new MoviesController();
-
-            // Act
-            controller.Delete(5);
-
-            // Assert
-        }
-         */
+    */
     }
     
 }

@@ -6,6 +6,7 @@ namespace VideoStore.MovieHelpers
 {
     public static class SearchHelper
     {
+
         public static List<Movie> Search(this List<Movie> movieData, SearchCriteria searchCriteria)
         {
             IEnumerable<Movie> movieResults = movieData;
@@ -30,11 +31,8 @@ namespace VideoStore.MovieHelpers
             if (searchCriteria.Rating != null)
                 movies = movies.Where(x => x.Rating == searchCriteria.Rating);
 
-            if (searchCriteria.FromReleaseDate != null)
-                movies = movies.Where(x => x.ReleaseDate > searchCriteria.FromReleaseDate);
-
-            if (searchCriteria.ToReleaseDate != null)
-                movies = movies.Where(x => x.ReleaseDate < searchCriteria.ToReleaseDate);
+            if (searchCriteria.ReleaseDate != null)
+                movies = movies.Where(x => x.ReleaseDate > searchCriteria.ReleaseDate);
 
             if (!string.IsNullOrEmpty(searchCriteria.Title))
                 movies = movies.Where(x => x.Title.Contains(searchCriteria.Title));

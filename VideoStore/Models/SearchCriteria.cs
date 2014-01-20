@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace VideoStore.Models
 {
@@ -12,8 +9,7 @@ namespace VideoStore.Models
         public string Genre { get; set; }
         public int? MovidId { get; set; }
         public int? Rating { get; set; }
-        public DateTime? FromReleaseDate { get; set; }
-        public DateTime? ToReleaseDate { get; set; }
+        public int? ReleaseDate { get; set; }
         public string Title { get; set; }
     }
 }

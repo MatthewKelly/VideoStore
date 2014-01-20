@@ -11,6 +11,16 @@ namespace VideoStore.Caching
         private static DateTime? _expiryDate;
         private readonly MovieRepository _movieRepository = new MovieRepository();
 
+        public MovieCache()
+        {
+           _movieRepository = new MovieRepository();
+        }
+
+        public MovieCache(MovieRepository movieRepository)
+        {
+            _movieRepository = movieRepository;
+        }
+
         public List<Movie> AllMovies()
         {
             if (_movies != null && (_expiryDate == null || !(_expiryDate < DateTime.Now))) return _movies;
@@ -20,6 +30,13 @@ namespace VideoStore.Caching
             return _movies;   
         }
 
+        public void AddMovieToCache(Movie movie)
+        {
+            if (movie == null) 
+                throw new ArgumentNullException();
+            _movies.Add(movie);
+            
+        }
 
     }
 }
