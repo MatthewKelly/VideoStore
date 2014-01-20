@@ -1,0 +1,15 @@
+C:\code\videostore\code\videostore\VideoStore\bin\VideoStore.dll
+C:\code\videostore\code\videostore\VideoStore\bin\VideoStore.pdb
+C:\code\videostore\code\videostore\VideoStore\bin\Microsoft.Web.Infrastructure.dll
+C:\code\videostore\code\videostore\VideoStore\bin\MoviesLibrary.dll
+C:\code\videostore\code\videostore\VideoStore\bin\Newtonsoft.Json.dll
+C:\code\videostore\code\videostore\VideoStore\bin\System.Net.Http.Formatting.dll
+C:\code\videostore\code\videostore\VideoStore\bin\System.Web.Http.dll
+C:\code\videostore\code\videostore\VideoStore\bin\System.Web.Http.WebHost.dll
+C:\code\videostore\code\videostore\VideoStore\bin\Newtonsoft.Json.xml
+C:\code\videostore\code\videostore\VideoStore\bin\System.Net.Http.Formatting.xml
+C:\code\videostore\code\videostore\VideoStore\bin\System.Web.Http.xml
+C:\code\videostore\code\videostore\VideoStore\bin\System.Web.Http.WebHost.xml
+C:\code\videostore\code\videostore\VideoStore\obj\Release\VideoStore.dll
+C:\code\videostore\code\videostore\VideoStore\obj\Release\VideoStore.pdb
+C:\code\videostore\code\videostore\VideoStore\obj\Release\VideoStore.csprojResolveAssemblyReference.cache
