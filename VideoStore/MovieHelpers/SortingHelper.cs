@@ -10,14 +10,13 @@ namespace VideoStore.MovieHelpers
         public static List<Movie> SortByAttribute(this List<Movie> movies, MovieAttribute attribute, bool sortDesc = false)
         {
             var sortedList = SortMoviesInAscendingOrder(movies, attribute);
- 
-            if (sortedList == null) return null;
+
             if (sortDesc)
-                sortedList = (IOrderedEnumerable<Movie>) sortedList.Reverse();
-            return sortedList.ToList();
+                sortedList.Reverse();
+            return sortedList;
         }
 
-        private static IOrderedEnumerable<Movie> SortMoviesInAscendingOrder(IEnumerable<Movie> movies, MovieAttribute attribute)
+        private static List<Movie> SortMoviesInAscendingOrder(IEnumerable<Movie> movies, MovieAttribute attribute)
         {
             IOrderedEnumerable<Movie> sortedList = null;
             switch (attribute)
@@ -43,7 +42,7 @@ namespace VideoStore.MovieHelpers
                     sortedList = movies.OrderBy(x => x.Title);
                     break;
             }
-            return sortedList;
+            return sortedList != null ? sortedList.ToList() : null;
         }
     }
 }

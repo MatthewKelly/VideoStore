@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Web.Http;
-using System.Web.Http.Validation;
+﻿using System.Web.Http;
 using VideoStore.Caching;
 using VideoStore.Handlers;
 using VideoStore.Models;
-using VideoStore.MovieHelpers;
-using VideoStore.Operations;
 using VideoStore.Repositories;
 
 namespace VideoStore.Controllers
@@ -16,7 +9,7 @@ namespace VideoStore.Controllers
     public class MoviesController : ApiController
     {
 
-        private readonly MovieRepository _movieRepository;
+        private readonly IMovieRepository _movieRepository;
         private readonly MovieCache _movieCache;
         public MoviesController()
         {
@@ -24,7 +17,7 @@ namespace VideoStore.Controllers
             _movieCache = new MovieCache();
         }
 
-        public MoviesController(MovieRepository movieRepository, MovieCache movieCache)
+        public MoviesController(IMovieRepository movieRepository, MovieCache movieCache)
         {
             _movieRepository = movieRepository;
             _movieCache = movieCache;
@@ -37,7 +30,7 @@ namespace VideoStore.Controllers
                                           int startFrom = 0, 
                                           int pageSize = 100)
         {
-            var handler = new MovieQueryHandler(_movieRepository, _movieCache);
+            var handler = new MovieQueryHandler(_movieCache);
             var result = handler.RunMovieQuery(searchCriteria, sortAttribute, sortDesc, startFrom, pageSize);
             return result;
 

@@ -7,10 +7,10 @@ namespace VideoStore.Handlers
 {
     public class CreateMovieHandler
     {
-        private readonly MovieRepository _movieRepository;
+        private readonly IMovieRepository _movieRepository;
         private readonly MovieCache _movieCache;
 
-        public CreateMovieHandler(MovieRepository movieRepository, MovieCache movieCache)
+        public CreateMovieHandler(IMovieRepository movieRepository, MovieCache movieCache)
         {
             _movieRepository = movieRepository;
             _movieCache = movieCache;
@@ -18,13 +18,18 @@ namespace VideoStore.Handlers
 
         public int CreateMovie(Movie movie)
         {
-            if (movie == null)
-                throw new ArgumentNullException();
-            var newMovieId = _movieRepository.CreateMovie(movie);
-            movie.MovieId = newMovieId;
+            ValidateMovie(movie);
+            movie.MovieId = _movieRepository.CreateMovie(movie);
             _movieCache.AddMovieToCache(movie);
-            return newMovieId;
+            return movie.MovieId;
         }
 
+        private static void ValidateMovie(Movie movie)
+        {
+            if (movie == null)
+                throw new ArgumentNullException("movie");
+            if (string.IsNullOrEmpty(movie.Title))
+                throw new ArgumentException("Movie must contain a title");
+        }
     }
 }

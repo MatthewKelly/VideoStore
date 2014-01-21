@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using VideoStore.Models;
 using VideoStore.Repositories;
 
@@ -9,16 +10,25 @@ namespace VideoStore.Caching
     {
         private static List<Movie> _movies;
         private static DateTime? _expiryDate;
-        private readonly MovieRepository _movieRepository = new MovieRepository();
+        private readonly IMovieRepository _movieRepository = new MovieRepository();
 
         public MovieCache()
         {
            _movieRepository = new MovieRepository();
         }
 
-        public MovieCache(MovieRepository movieRepository)
+        public MovieCache(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
+        }
+
+        public DateTime? ExpiryDate {
+            get { return _expiryDate; }
+        }
+
+        public void Expire()
+        {
+            _movies = null;
         }
 
         public List<Movie> AllMovies()
@@ -30,12 +40,26 @@ namespace VideoStore.Caching
             return _movies;   
         }
 
-        public void AddMovieToCache(Movie movie)
+        public void UpdateMovieInCache(Movie movie)
         {
-            if (movie == null) 
-                throw new ArgumentNullException();
-            _movies.Add(movie);
             
+            if (movie == null)
+                throw new ArgumentNullException("movie");
+
+            var movies = AllMovies();
+            var matchedMovie = movies.Single(x => x.MovieId == movie.MovieId);
+            movies.Remove(matchedMovie);
+            movies.Add(movie);
+        }
+
+
+        public void AddMovieToCache(Movie movie) 
+        {
+            if (movie == null)
+                throw new ArgumentNullException("movie");
+
+            var movies = AllMovies();
+            movies.Add(movie);
         }
 
     }

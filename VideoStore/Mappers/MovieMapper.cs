@@ -1,5 +1,4 @@
-﻿using System;
-using MoviesLibrary;
+﻿using MoviesLibrary;
 using VideoStore.Models;
 
 namespace VideoStore.Mappers

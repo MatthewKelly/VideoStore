@@ -23,7 +23,7 @@ namespace VideoStore.MovieHelpers
                 movies = movies.Where(x => x.Cast.Contains(searchCriteria.Cast));
 
             if (!string.IsNullOrEmpty(searchCriteria.Classification))
-                movies = movies.Where(x => x.Cast.Contains(searchCriteria.Classification));
+                movies = movies.Where(x => x.Classification.Contains(searchCriteria.Classification));
 
             if (!string.IsNullOrEmpty(searchCriteria.Genre))
                 movies = movies.Where(x => x.Genre.Contains(searchCriteria.Genre));
