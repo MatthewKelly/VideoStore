@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Odbc;
 using System.Linq;
 using log4net;
-using log4net.Repository.Hierarchy;
 using MoviesLibrary;
-using VideoStore.Caching;
 using VideoStore.Mappers;
 using VideoStore.Models;
 
 namespace VideoStore.Repositories
 {
-    public class MovieRepository
+    public class MovieRepository : IMovieRepository
     {
         private readonly MovieDataSource _movieDataSource;
         
-        private static readonly ILog Logger = log4net.LogManager.GetLogger(typeof(MovieRepository));
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(MovieRepository));
 
         public MovieRepository()
         {
